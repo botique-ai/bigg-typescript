@@ -29,7 +29,9 @@ module.exports = function (gulp) {
         return json;
       }))
       .pipe(gulp.dest('.'))
-      .pipe(install());
+      .pipe(install({
+        args: '--progress=false'
+      }));
   });
 
   gulp.task('compile', () => {
