@@ -2,20 +2,19 @@
   "name": "bigg-typescript",
   "version": "0.0.1",
   "description": "Build process for a typescript project",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "gulp-filter": "^4.0.0",
-    "gulp-install": "^0.6.0",
-    "gulp-json-editor": "^2.2.1",
-    "gulp-mocha": "^2.2.0",
-    "gulp-nodemon": "^2.0.6",
-    "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.12.1",
-    "merge2": "^1.0.1",
-    "typescript": "^1.8.10"
+    "gulp-util": "^3.0.7",
+    "merge2": "^1.0.2",
+    "typescript": "^2.0.0"
+  },
+  "devDependencies": {
+    "bigg": "^0.3.2",
+    "bigg-botique": "^0.1.4"
   },
   "author": "",
   "license": "ISC"
