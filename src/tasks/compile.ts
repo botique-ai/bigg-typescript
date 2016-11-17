@@ -21,6 +21,7 @@ export function compile({
   log('------------------------------------------');
   log('===> Starting typescript compilation...');
   log('------------------------------------------');
+  const startTime = new Date();
 
   const tsResult: CompilationStream = src(compilePaths, { base: "." })
     .pipe(sourcemaps.init({
@@ -37,8 +38,10 @@ export function compile({
       log('------------------------------------------');
     })
     .on('end', () => {
+      const compilationTime = Math.round((new Date().getTime() - startTime.getTime()) / 1000 * 100) / 100;
+
       log('------------------------------------------');
-      log('<=== Typescript source compiling finished.');
+      log(`<=== Typescript source compiling finished in ${compilationTime} sec.`);
       log('------------------------------------------');
     });
 

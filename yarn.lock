@@ -1009,6 +1009,15 @@ gulp@^3.9.1:
     v8flags "^2.0.2"
     vinyl-fs "^0.3.0"
 
+"gulp@git://github.com/gulpjs/gulp.git#4.0":
+  version "4.0.0-alpha.2"
+  resolved "git://github.com/gulpjs/gulp.git#4d726af750638d022126d653ccd1c397697cadc6"
+  dependencies:
+    glob-watcher "^3.0.0"
+    gulp-cli "^1.0.0"
+    undertaker "^1.0.0"
+    vinyl-fs "^2.0.0"
+
 "gulp@github:gulpjs/gulp#4.0":
   version "4.0.0-alpha.2"
   resolved "https://codeload.github.com/gulpjs/gulp/tar.gz/4d726af750638d022126d653ccd1c397697cadc6"
