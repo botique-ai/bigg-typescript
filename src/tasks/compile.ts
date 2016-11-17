@@ -33,7 +33,7 @@ export function compile({
     .pipe(dest(outputDir))
     .on('error', (err) => {
       log('------------------------------------------');
-      log('<=== Failed to compiler tests sources. ' + err.stack);
+      log('<=== Failed to compile sources. ' + err.stack);
       log('------------------------------------------');
     })
     .on('end', () => {

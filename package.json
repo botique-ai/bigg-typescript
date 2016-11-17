@@ -4,17 +4,20 @@
   "description": "Build process for a typescript project",
   "main": "index.js",
   "scripts": {
+    "prepublish": "bigg compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "gulp": "^3.9.1",
     "gulp-typescript": "^2.12.1",
     "gulp-util": "^3.0.7",
     "merge2": "^1.0.2",
     "typescript": "^2.0.0"
   },
   "devDependencies": {
-    "bigg": "^0.3.2",
-    "bigg-botique": "^0.1.4"
+    "bigg": "latest",
+    "bigg-botique": "^0.1.4",
+    "ts-node": "^1.7.0"
   },
   "author": "",
   "license": "ISC"
