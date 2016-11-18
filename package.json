@@ -1,6 +1,6 @@
 {
   "name": "bigg-typescript",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Build process for a typescript project",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
