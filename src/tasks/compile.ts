@@ -1,9 +1,8 @@
 import {dest, src} from "gulp";
-import * as ts from "gulp-typescript";
 import {reporter as tsReporter} from "gulp-typescript";
 import {log} from "gulp-util";
 import * as sourcemaps from "gulp-sourcemaps";
-import {createTsProject} from "../utils/createTsProject";
+import {createTsProjectFromOptions} from "../utils/createTsProject";
 import {getCompilePaths} from "../utils/getCompilePaths";
 import {join} from "path";
 import merge = require("merge2");
@@ -11,6 +10,7 @@ import merge = require("merge2");
 export function compile({
   declarations = false,
   tsProjectOptions = {},
+  tsProject,
   compilePaths = getCompilePaths(),
   outputDir = '.',
   definitionsDir = 'definitions',
@@ -18,6 +18,7 @@ export function compile({
 }: {
   declarations?: boolean;
   tsProjectOptions?: any;
+  tsProject?: any,
   compilePaths?: Array<string>;
   outputDir?: string;
   definitionsDir?: string;
@@ -27,23 +28,17 @@ export function compile({
   log('===> Starting typescript compilation...');
   log('------------------------------------------');
   const startTime = new Date();
-  const tsProject = createTsProject(Object.assign(
-    tsProjectOptions,
-    declarations ? {
-      declaration: true
-    } : {
-      declaration: false
-    }
-  ));
+  const tsProjectToUse = tsProject || createTsProjectFromOptions({
+      tsProjectOptions,
+      declarations
+    });
 
-  const tsResult = src(compilePaths, { base: "." })
-    .pipe(sourcemaps.init({
-      identityMap: true
-    } as any))
-    .pipe(ts(tsProject, undefined, reporter) as any);
+  const tsResult = src(compilePaths, {base: "."})
+    .pipe(sourcemaps.init())
+    .pipe(tsProjectToUse(reporter) as any);
 
   const jsFiles = tsResult.js
-    .pipe(sourcemaps.write(outputDir))
+    .pipe(sourcemaps.write())
     .pipe(dest(outputDir))
     .on('error', (err) => {
       log('------------------------------------------');
