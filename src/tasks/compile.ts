@@ -5,24 +5,36 @@ import {log} from "gulp-util";
 import * as sourcemaps from "gulp-sourcemaps";
 import {createTsProject} from "../utils/createTsProject";
 import {getCompilePaths} from "../utils/getCompilePaths";
+import {join} from "path";
 import merge = require("merge2");
 
 export function compile({
+  declarations = false,
   tsProjectOptions = {},
   compilePaths = getCompilePaths(),
   outputDir = '.',
+  definitionsDir = 'definitions',
   reporter = tsReporter.fullReporter(true)
 }: {
+  declarations?: boolean;
   tsProjectOptions?: any;
   compilePaths?: Array<string>;
   outputDir?: string;
+  definitionsDir?: string;
   reporter?: any;
 }) {
   log('------------------------------------------');
   log('===> Starting typescript compilation...');
   log('------------------------------------------');
   const startTime = new Date();
-  const tsProject = createTsProject(tsProjectOptions);
+  const tsProject = createTsProject(Object.assign(
+    tsProjectOptions,
+    declarations ? {
+      declaration: true
+    } : {
+      declaration: false
+    }
+  ));
 
   const tsResult = src(compilePaths, { base: "." })
     .pipe(sourcemaps.init({
@@ -46,7 +58,9 @@ export function compile({
       log('------------------------------------------');
     });
 
-  const dtsFiles = tsResult.dts.pipe(dest(outputDir));
+  const dtsFiles = tsResult.dts.pipe(
+    dest(join(outputDir, definitionsDir))
+  );
 
   return merge([jsFiles, dtsFiles]) as any;
 }
