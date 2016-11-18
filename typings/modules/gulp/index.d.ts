@@ -523,7 +523,7 @@ interface SrcOptions extends globStream.Options, through.Options {
      * Setting this to false will ignore the contents of the file and disable writing to disk to speed up operations
      * Defaults to true
      */
-    read?: boolean;
+    read?: any;
 
     /**  Only find files that have been modified since the time specified */
     since?: Date | number;

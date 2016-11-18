@@ -11,16 +11,14 @@
         "raw": "registry:npm/chokidar#1.6.0+20160817083815",
         "main": "index.d.ts",
         "version": "1.6.0",
-        "name": "chokidar",
-        "type": "typings"
+        "name": "chokidar"
       },
       "undertaker": {
         "src": "https://raw.githubusercontent.com/types/npm-undertaker/7173e366378a4eb493f8921629e29ca0f84a50d3/typings.json",
         "raw": "registry:npm/undertaker#1.0.0+20160817104605",
         "main": "index.d.ts",
         "version": "1.0.0",
-        "name": "undertaker",
-        "type": "typings"
+        "name": "undertaker"
       },
       "vinyl-fs": {
         "src": "https://raw.githubusercontent.com/types/npm-vinyl-fs/94022d746133d86138b21e97fdc4179a89645685/typings.json",
@@ -43,38 +41,31 @@
                     "src": "https://raw.githubusercontent.com/typed-typings/npm-minimatch/74f47de8acb42d668491987fc6bc144e7d9aa891/typings.json",
                     "raw": "github:typed-typings/npm-minimatch#74f47de8acb42d668491987fc6bc144e7d9aa891",
                     "main": "minimatch.d.ts",
-                    "name": "minimatch",
-                    "type": "typings"
+                    "name": "minimatch"
                   }
                 },
-                "name": "glob",
-                "type": "typings"
+                "name": "glob"
               }
             },
-            "name": "glob-stream",
-            "type": "typings"
+            "name": "glob-stream"
           },
           "through2": {
             "src": "https://raw.githubusercontent.com/types/npm-through2/83d47b72bdd67d6b94155846514a0e4212458d53/typings.json",
             "raw": "registry:npm/through2#2.0.0+20160817101636",
             "main": "index.d.ts",
-            "name": "through2",
-            "type": "typings"
+            "name": "through2"
           },
           "vinyl": {
             "src": "https://raw.githubusercontent.com/types/npm-vinyl/13670eff75aba7b4c95546ec9eebbb72e3537188/typings.json",
             "raw": "registry:npm/vinyl#1.2.0+20160817093728",
             "main": "index.d.ts",
             "version": "1.2.0",
-            "name": "vinyl",
-            "type": "typings"
+            "name": "vinyl"
           }
         },
-        "name": "vinyl-fs",
-        "type": "typings"
+        "name": "vinyl-fs"
       }
     },
-    "name": "gulp",
-    "type": "typings"
+    "name": "gulp"
   }
 }

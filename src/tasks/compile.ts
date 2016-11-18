@@ -1,6 +1,6 @@
 import {dest, src} from "gulp";
 import * as ts from "gulp-typescript";
-import {CompilationStream, reporter as tsReporter} from "gulp-typescript";
+import {reporter as tsReporter} from "gulp-typescript";
 import {log} from "gulp-util";
 import * as sourcemaps from "gulp-sourcemaps";
 import {createTsProject} from "../utils/createTsProject";
@@ -8,12 +8,12 @@ import {getCompilePaths} from "../utils/getCompilePaths";
 import merge = require("merge2");
 
 export function compile({
-  tsProject = createTsProject(),
+  tsProjectOptions = {},
   compilePaths = getCompilePaths(),
   outputDir = '.',
   reporter = tsReporter.fullReporter(true)
 }: {
-  tsProject?: any;
+  tsProjectOptions?: any;
   compilePaths?: Array<string>;
   outputDir?: string;
   reporter?: any;
@@ -22,12 +22,13 @@ export function compile({
   log('===> Starting typescript compilation...');
   log('------------------------------------------');
   const startTime = new Date();
+  const tsProject = createTsProject(tsProjectOptions);
 
-  const tsResult: CompilationStream = src(compilePaths, { base: "." })
+  const tsResult = src(compilePaths, { base: "." })
     .pipe(sourcemaps.init({
       identityMap: true
-    }))
-    .pipe(ts(tsProject, undefined, reporter));
+    } as any))
+    .pipe(ts(tsProject, undefined, reporter) as any);
 
   const jsFiles = tsResult.js
     .pipe(sourcemaps.write(outputDir))
@@ -48,5 +49,4 @@ export function compile({
   const dtsFiles = tsResult.dts.pipe(dest(outputDir));
 
   return merge([jsFiles, dtsFiles]) as any;
-
 }

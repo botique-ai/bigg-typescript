@@ -1,6 +1,6 @@
 export = {
   biggs: [
-    'bigg-botique'
+    'bigg-typescript'
   ],
   defaultTask: 'compileAndWatch'
 };
